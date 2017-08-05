@@ -1,0 +1,15 @@
+#products-list{
+	display: flex;
+	flex-wrap: wrap;
+}
+.product-wrapper{
+	padding: 15px 10px;
+	margin: 10px;
+	width: 250px;
+	min-height: 300px;
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.product-wrapper img{
+	max-width: 100%;
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
