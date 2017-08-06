@@ -10,9 +10,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     
-    this.state = {'products': []};
+    this.state = {products: [], link: ''};
 
     this.categorySelect = this.categorySelect.bind(this);
+    this.attributeSelect = this.attributeSelect.bind(this);
   }
 
   componentWillMount() {
@@ -26,11 +27,16 @@ class App extends Component {
   }
 
   categorySelect( category ) {
-    let link = "http://localhost:8000/api/categories/"+ category +"/products";
-
+    let link = ''; 
     if(category == null) {
       link = "http://localhost:8000/api/products";
+    } else if(typeof(category) == "object") {
+      link = "http://localhost:8000/api/categories/"+ category.id +"/products";
+    } else {
+      link = "http://localhost:8000/api/categories/"+ category +"/products";
     }
+
+    this.setState({link: link});
 
     axios.get(link)
           .then((response) => {
@@ -41,9 +47,26 @@ class App extends Component {
           });
   }
 
+  attributeSelect(filters) {
+    const { link } = this.state;
+    let query = '';
+
+    query = Object.keys(filters).map(attribute =>{
+       return attribute+'='+filters[attribute].join();
+    }).join('&');
+    
+    axios.get(link +'?'+ query)
+          .then((response) => {
+            this.setState({'products': response.data});
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+  }
+
   render() {
     const { products } = this.state;
-console.log(products);
+
     return (
       <div className="App">
         <div className="App-header">
@@ -51,7 +74,7 @@ console.log(products);
           <h2>Welcome to React</h2>
         </div>
         <div className="App-intro">
-          <Sidebar onCategorySelect={ this.categorySelect }/>
+          <Sidebar onCategorySelect={ this.categorySelect } onAttributeSelect={ this.attributeSelect }/>
           <Products products={ products }/>
         </div>
       </div>

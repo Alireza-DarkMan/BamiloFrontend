@@ -14,3 +14,19 @@
 	max-width: 100%;
 	box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
+.pagination{
+	list-style: none;
+	padding: 0;
+	margin: none;
+}
+.pagination li{
+	display: inline-block;
+	padding: 10px;
+	margin: 10px;
+	border-right: 5px;
+	box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+	cursor: pointer;
+}
+.pagination li.active{
+	box-shadow: none;
+}

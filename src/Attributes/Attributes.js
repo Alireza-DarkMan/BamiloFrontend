@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 
 class Attributes extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {};
+
+		this.onClickHandler = this.onClickHandler.bind(this);
+	}
+	
+	onClickHandler(e) {
+		this.props.onAttributeSelect(e.target.name, e.target.value, e.target.checked);
+	}
+
 	render() {
 		const { attributes } = this.props;
 
@@ -8,7 +20,7 @@ class Attributes extends Component {
 			<div>
 				{ attributes.map(attribute => {
 					return (
-						<div key={ attribute.id } onClick={ () => this.onClickHander( attribute.id ) }> 
+						<div key={ attribute.id }> 
 							<h4>{ attribute.title }</h4>
 							<ul>
 							{
@@ -16,7 +28,12 @@ class Attributes extends Component {
 									return (
 										<li key={ value }>
 											<label>
-												<input type="checkbox" value={ value } /> {value}
+												<input 
+													type="checkbox" 
+													name={ attribute.id }
+													value={ value } 
+													onChange={ this.onClickHandler }/> 
+												{value}
 											</label>
 										</li>
 										);

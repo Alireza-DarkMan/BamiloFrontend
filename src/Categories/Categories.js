@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './Categories.css';
+
 class Categories extends Component {
 	constructor(props) {
 		super(props);
@@ -18,11 +20,10 @@ class Categories extends Component {
 
 		return (
 			<ul>
-				<li onClick={ () => this.onClickHandler(categories[0].parent_id) }>All</li>
 				{ categories.map(category => {
 					return (
 						<li key={ category.id }> 
-							<span  onClick={ () => this.onClickHandler( category.id ) }>
+							<span  onClick={ () => this.onClickHandler( category ) }>
 								{ category.title } 
 							</span>
 
