@@ -20,7 +20,13 @@
 }
 
 #sidebar{
+  padding: 15px;
+  text-align: right;
   flex:1;
+}
+
+#sidebar ul {
+  list-style: none;
 }
 
 #products-list{

@@ -9,12 +9,14 @@ class Products extends Component {
 		const { products } = this.props;
 
 		return (
-			<div id="products-list">
-				{
-					products.map(product => {
-						return <Product product={ product } key={ product.id } />
-					})
-				}
+			<div>
+				<div id="products-list">
+					{
+						products.map(product => {
+							return <Product product={ product } key={ product.id } />
+						})
+					}
+				</div>
 			</div>
 			);
 	}

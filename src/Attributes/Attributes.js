@@ -5,11 +5,11 @@ class Attributes extends Component {
 		const { attributes } = this.props;
 
 		return (
-			<ul>
+			<div>
 				{ attributes.map(attribute => {
 					return (
-						<li key={ attribute.id } onClick={ () => this.onClickHander( attribute.id ) }> 
-							{ attribute.title } 
+						<div key={ attribute.id } onClick={ () => this.onClickHander( attribute.id ) }> 
+							<h4>{ attribute.title }</h4>
 							<ul>
 							{
 								attribute.values.map(value => {
@@ -23,12 +23,12 @@ class Attributes extends Component {
 								})
 							}
 							</ul>
-						</li>
+						</div>
 
 						)
 					})
 				}
-			</ul>
+			</div>
 			);
 	}
 }

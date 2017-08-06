@@ -6,7 +6,7 @@ class Product extends Component {
 
 		return (
 			<div className="product-wrapper">
-				<img src={ "http://localhost:8000/storage/images/" + product.img_url } />
+				<img src={ "http://localhost:8000/storage/images/" + product.img_url } alt='' />
 				<h3>{ product.title }</h3>
 				<h5>{ product.model }</h5>
 			</div>

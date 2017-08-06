@@ -30,13 +30,15 @@ class Sidebar extends Component {
 	categorySelect( category ) {
 		this.props.onCategorySelect(category);
 		
-		axios.get("http://localhost:8000/api/categories/"+category+"/attributes")
-		      .then((response) => {
-		        this.setState({'attributes': response.data});
-		      })
-		      .catch((err) => {
-		        console.log(err);
-		      })		
+		if(category) {
+			axios.get("http://localhost:8000/api/categories/"+category+"/attributes")
+			      .then((response) => {
+			        this.setState({'attributes': response.data});
+			      })
+			      .catch((err) => {
+			        console.log(err);
+			      })		
+		}
 	}
 
 	render() {

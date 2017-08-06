@@ -26,7 +26,13 @@ class App extends Component {
   }
 
   categorySelect( category ) {
-    axios.get("http://localhost:8000/api/categories/"+ category +"/products")
+    let link = "http://localhost:8000/api/categories/"+ category +"/products";
+
+    if(category == null) {
+      link = "http://localhost:8000/api/products";
+    }
+
+    axios.get(link)
           .then((response) => {
             this.setState({'products': response.data});
           })
